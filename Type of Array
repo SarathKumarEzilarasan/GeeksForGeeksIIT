@@ -1,0 +1,64 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+public static void main (String[] args) throws NumberFormatException, IOException{
+		//code
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
+        int t = Integer.parseInt(br.readLine()); 
+    while (t-- > 0) { 
+        // n : size of array 
+    	int n=Integer.parseInt(br.readLine());
+        String line = br.readLine();
+        String arr[]=line.trim().split(" ");
+        ArrayList<Integer> a=new ArrayList<>();
+        ArrayList<Integer> b=new ArrayList<>();
+        for(int i=0;i<n;i++) {
+        	a.add(Integer.parseInt(arr[i]));
+        }
+        int max=0;int start=0;int end=0;
+        
+        
+        for(int i=0;i<n-1;i++) {
+        	if(a.get(i)>a.get(i+1)) {
+        		start=2;
+        		max=a.get(0);
+        		end=1;
+        	}else if(a.get(i)<a.get(i+1) && end==1){
+        		start=3;
+        		max=a.get(i+1);
+        		break;
+        	}else {
+        		break;
+        }
+        }
+        if(start==0) {
+        for(int i=0;i<n-1;i++) {
+        	if(a.get(i)<a.get(i+1)) {
+        		start=1;
+        		max=a.get(n-1);
+        		end=2;
+        	}else if(a.get(i)>a.get(i+1) && end==2){
+        		start=4;
+        		max=a.get(i);
+        		break;
+        	}
+        }
+        }
+        if(a.get(0)>a.get(n-1) && a.get(1)<a.get(2)){
+            start=4;
+            Collections.sort(a);
+            max=a.get(n-1);
+        }
+        if(a.get(0)<a.get(n-1) && a.get(1)>a.get(2)){
+            start=3;
+            Collections.sort(a);
+            max=a.get(n-1);
+        }
+        
+        System.out.println(max+" "+start);
+    }}
+}
