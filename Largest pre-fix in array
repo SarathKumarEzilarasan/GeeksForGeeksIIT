@@ -1,0 +1,30 @@
+public static void main (String[] args) throws NumberFormatException, IOException 
+	{
+		//code
+		String[] arr= {"geeksforgeeks","geeks","geek","geezer"};
+//		permutation(arr,1);
+		
+		
+		char res;
+		String r="";
+		
+		Arrays.sort(arr,(a, b)->Integer.compare(a.length(), b.length()));
+		int n=arr[0].length();
+		
+		
+		for(int i=0;i<n;i++) {
+			int count=1;int c=0;
+			res=arr[0].charAt(i);
+			while(count<arr.length) {
+				if(arr[count].charAt(i)==res) {
+					c+=1;
+				}
+				count++;
+			}
+			if(c==arr.length-1) {
+				r+=res;
+			}
+		}
+		System.out.println(r);
+   
+}
