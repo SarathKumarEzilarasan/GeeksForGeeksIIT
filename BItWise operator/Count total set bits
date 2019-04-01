@@ -51,7 +51,7 @@ class GFG {
     		int i=j;
     		while(i!=0) {
     			count+=1;
-    			i=i&(i-1);  //brian kernighan's algo
+    			i=i&(i-1);  //brian kernighan's algo // Integer.BitCount()
     		}
     		j+=1;
     	}
