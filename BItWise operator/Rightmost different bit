@@ -1,0 +1,56 @@
+//Rightmost different bit
+Given two numbers M and N. The task is to find the position of rightmost different bit in binary representation of numbers.
+
+Input:
+The input line contains T, denoting the number of testcases. Each testcase follows. First line of each testcase contains two space separated integers M and N.
+
+Output:
+For each testcase in new line, print the position of rightmost different bit in binary representation of numbers. If both M and N are same then print -1 in this case.
+
+Constraints:
+1 <= T <= 100
+1 <= M <= 103
+1 <= N <= 103
+
+Example:
+Input:
+2
+11 9
+52 4
+
+Output:
+2
+5
+
+Explanation:
+Tescase 1: Binary representaion of the given numbers are: 1011 and 1001, 2nd bit from right is different.
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) throws NumberFormatException, IOException{
+		//code
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
+        int t = Integer.parseInt(br.readLine()); 
+    while (t-- > 0) { 
+        // n : size of array 
+    	String[] val=br.readLine().split(" ");
+        int n=Integer.parseInt(val[0]);
+        int sum=Integer.parseInt(val[1]);
+    	 if(n==sum) {
+        	System.out.println(-1);
+        }else {
+        int s=n^sum;int count=0;
+    	while((s&1)!=1) {
+    		s=s>>1;
+    		count+=1;
+    	}
+        if(count>0)
+        	System.out.println(count+1);
+        else if(s>1)
+        	System.out.println(1);
+    }}}
+}
