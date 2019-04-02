@@ -1,0 +1,56 @@
+//Gray Code
+You are given a decimal number n. You need to find the gray code of the number n and conver it into decimal.
+To see how it's done, refer here.
+
+Input:
+The first line contains an integer T, the number of test cases. For each test case, there is an integer n denoting the number
+
+Output:
+For each test case, the output is gray code equivalent of n.
+
+Constraints:
+1 <= T <= 100
+0 <= n <= 108
+
+Example:
+Input
+2
+7
+10
+Output
+4
+15
+
+Explanation:
+Testcase1: 7 is represented as 111 in binary form. The gray code of 111 is 100, in the binary form whose decimal equivalent is 4.
+
+Testcase2: 10 is represented as 1010 in binary form. The gray code of 1010 is 1111, in the binary form whose decimal equivalent is 15.
+
+
+
+
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+public static void main (String[] args) throws NumberFormatException, IOException{
+		//code
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
+        int t = Integer.parseInt(br.readLine()); 
+    while (t-- > 0) { 
+        // n : size of array 
+    	int n=Integer.parseInt(br.readLine());
+    	String r=Integer.toBinaryString(n);
+    	char[] c=r.toCharArray();
+    	String s=""+c[0];
+    	for(int i=1;i<c.length;i++) {
+    		s=s+Integer.parseInt(""+(c[i]^c[i-1]));
+    	}
+    	
+    	System.out.println(Integer.parseUnsignedInt(s, 2));
+    	
+        }}
+}
