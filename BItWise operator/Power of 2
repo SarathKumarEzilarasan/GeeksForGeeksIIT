@@ -1,0 +1,52 @@
+//Power of 2
+Given a positive integer N. The task is to check if N is a power of 2. That is N is 2x for some x.
+
+Input:
+The first line contains T denoting the number of test cases. Each test case contains a single positive integer N.
+
+Output:
+Print "YES" if it is a power of 2 else "NO" (Without the double quotes).
+
+Constraints:
+1 <= T <= 100
+0 <= N <= 1018
+
+Example:
+Input :
+2
+1
+98
+
+Output :
+YES
+NO
+
+Explanation:
+Testcase 1:  1 is equal to 2 raised to 0 (20 == 1).
+
+
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) throws NumberFormatException, IOException{
+		//code
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
+        int t = Integer.parseInt(br.readLine()); 
+    while (t-- > 0) { 
+        // n : size of array 
+    	Long n=Long.parseLong(br.readLine());
+    	int count=0;
+    	while(n>0) {
+    		n=n&n-1;  //brain's algo to find set bit count if more than 1 then not power of 2
+    		count++;
+    	}
+    	if(count!=1)
+    		System.out.println("NO");
+    	else
+    		System.out.println("YES");
+        }}
+}
