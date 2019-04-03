@@ -1,0 +1,36 @@
+//LCM And GCD
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) throws NumberFormatException, IOException{
+		//code
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
+        int t = Integer.parseInt(br.readLine()); 
+    while (t-- > 0) { 
+        // n : size of array 
+    	String[] val=br.readLine().split(" ");
+        long n=Long.parseLong(val[0]);
+        long sum=Long.parseLong(val[1]);
+        long gcd=1;
+        if(n>sum)
+    	gcd=gcd(sum,n);
+    	else
+    	gcd=gcd(n,sum);
+    	long Lcm=(n*sum)/gcd;///a*b=LCM*GCD
+    	
+    	System.out.print(Lcm+" "+gcd);
+    	System.out.println();
+}
+	}
+	private static long gcd(long a,long b) {
+		if(a==0) {
+			return b;
+		}
+		
+		return gcd(b%a,a); //https://www.geeksforgeeks.org/c-program-find-gcd-hcf-two-numbers/
+	}
+}
