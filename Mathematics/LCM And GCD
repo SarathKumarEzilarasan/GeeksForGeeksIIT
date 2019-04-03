@@ -20,7 +20,11 @@ class GFG {
     	gcd=gcd(sum,n);
     	else
     	gcd=gcd(n,sum);
-    	long Lcm=(n*sum)/gcd;///a*b=LCM*GCD
+    	long Lcm=(n*sum)/gcd;///a*b=LCM*GCD // GCD of array of ele
+	
+	//gcd(a, b, c) = gcd(a, gcd(b, c)) 
+          //   = gcd(gcd(a, b), c) 
+            // = gcd(gcd(a, c), b)
     	
     	System.out.print(Lcm+" "+gcd);
     	System.out.println();
