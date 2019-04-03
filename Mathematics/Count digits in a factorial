@@ -1,0 +1,46 @@
+//Count digits in a factorial
+Given an integer N. The task is to find the number of digits that appear in its factorial, where factorial is defined as, factorial(n) = 1*2*3*4……..*N and factorial(0) = 1.
+
+Input:
+The first line of input contains a single integer T denoting the number of test cases. Then T test cases follow. Each test case consist of one line. The first line of each test case consists of an integer N.
+
+Output:
+Corresponding to each test case, in a new line, print the number of digits that appear in its factorial.
+
+Constraints:
+1 ≤ T ≤ 100
+1 ≤ N ≤ 104
+
+Example:
+Input:
+2
+5
+120
+
+Output:
+3
+199
+
+Explanation:
+Testcase 1: Factorial of 5 is 120. Number of digits in 120 is 3 (1, 2, and 0).
+
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+public static void main (String[] args) throws NumberFormatException, IOException{
+		//code
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
+        int t = Integer.parseInt(br.readLine()); 
+    while (t-- > 0) { 
+    	int n=Integer.parseInt(br.readLine());
+    	int count=0;
+	
+		count=(int) (n*Math.log10(n/Math.E)+Math.log10(2*Math.PI*n)/2); //Kamenetsky's formula
+	System.out.println(count+1);
+}
+}
+}
