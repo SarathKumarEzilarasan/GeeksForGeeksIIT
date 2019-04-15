@@ -1,0 +1,33 @@
+//compute (xy) % p.
+
+
+
+import java.io.IOException;
+import java.util.ArrayList;
+class Solution
+ {
+    public static final long M = 1000000007;
+	public static void main (String[] args) throws IOException
+	 { 
+		ArrayList<Integer> arr=new ArrayList<>();
+		for(int i=1;i<=5;i++) {
+			arr.add(i);
+		}
+		loc(12,15,1000000007,1);
+	 }
+	
+	private static void loc(int x,int y,int mod,int res) {
+		if(y==0) {
+			System.out.println(res);
+			return;
+		}
+		
+		if(y%2!=0) {
+			res=(res*x)%mod;
+		}
+		
+		loc((x*x)%mod,y>>1,mod,res);
+	
+	
+	}
+}
