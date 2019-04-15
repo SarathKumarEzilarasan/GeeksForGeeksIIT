@@ -1,0 +1,32 @@
+//Circle of death
+//Consider if n = 5 and k = 2, then the safe position is 3.
+//Firstly, the person at position 2 is killed, then person at position 4 is killed,
+//then person at position 1 is killed. Finally, the person at position 5 is killed. So the person at position 3 survives.
+
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.math.BigInteger;
+import java.io.*;
+
+class sol {
+	public static void main (String[] args) throws NumberFormatException, IOException{
+		//code
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
+        int t = Integer.parseInt(br.readLine()); 
+    while (t-- > 0) { 
+        // n : size of array 
+    	String[] val=br.readLine().split(" ");
+        int n=Integer.parseInt(val[0]);
+        int sum=Integer.parseInt(val[1]);
+    	System.out.println(print(n,sum));
+    }
+	}
+	private static int print(int n,int k) {
+		if(n==1) {
+			return 1;
+		}
+		return (print(n-1,k)+k-1)%n+1;    //Josephus problem
+	}
+}
