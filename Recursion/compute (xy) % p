@@ -1,5 +1,6 @@
 //compute (xy) % p.
 
+//Modular Exponentiation (Power in Modular Arithmetic)
 
 
 import java.io.IOException;
