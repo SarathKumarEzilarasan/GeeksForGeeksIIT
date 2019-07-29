@@ -1,0 +1,57 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		// code
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int t = Integer.parseInt(br.readLine());
+		while (t-- > 0) {
+			// n : size of array
+			int n = Integer.parseInt(br.readLine());
+			String line = br.readLine();
+			String arr[] = line.trim().split(" ");
+			ArrayList<Integer> b = new ArrayList<>();
+			int[] a = new int[n];
+			int count = 0;
+			for (int i = 0; i < n; i++) {
+				a[i] = Integer.parseInt(arr[i]);
+			}
+			Stack<Integer> s = new Stack<>();
+			int start = 0;
+			for (int i = 0; i < n; i++) {
+				if (s.empty()) {
+					s.add(a[i]);
+				} else if (s.peek() < a[i]) {
+					s.add(a[i]);
+				} else {
+					extracted(b, a, s, start, i);
+					start = i;
+				}
+			}
+			extracted(b, a, s, start, n - 1);
+			if (b.size() != 0) {
+				for (int i = 0; i < b.size(); i += 2) {
+					System.out.print("(" + b.get(i) + " " + b.get(i + 1) + ")" + " ");
+				}
+			} else {
+				System.out.print("No Profit");
+			}
+			System.out.println();
+		}
+	}
+
+	private static void extracted(ArrayList<Integer> b, int[] a, Stack<Integer> s, int start, int i) {
+		int count;
+		count = s.size();
+		if (count > 1) {
+			b.add(start);
+			b.add(start + count - 1);
+		}
+		s.removeAllElements();
+		s.add(a[i]);
+	}
+}
