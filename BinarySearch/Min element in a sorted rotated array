@@ -1,0 +1,48 @@
+package Searching;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class search {
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int t = Integer.parseInt(br.readLine());
+		while (t-- > 0) {
+			// n : size of array
+//    	String[] val=br.readLine().split(" ");
+//        int n=Integer.parseInt(val[0]);
+//        int sum=Integer.parseInt(val[1]);
+			int n = Integer.parseInt(br.readLine());
+//			String n = br.readLine();
+//			int k = Integer.parseInt(br.readLine().trim());
+			String line = br.readLine();
+			String arr[] = line.trim().split(" ");
+			int[] a = new int[n];
+			for (int i = 0; i < n; i++) {
+				a[i] = Integer.parseInt(arr[i]);
+			}
+			System.out.println(a[Search(a, 1, 0, n - 1)]);
+		}
+	}
+
+	private static int Search(int[] a, int n, int l, int r) {
+		if (l <= r) {
+			int mid = l + (r - l) / 2;
+			if (a[mid] > a[l] && a[mid] < a[r])
+				return -1;
+			if (a[mid] < a[mid - 1] && a[mid + 1] > a[mid])
+				return mid;
+			if (mid == l && a[mid] > a[mid + 1])
+				return mid + 1;
+			if (mid == l && a[mid] < a[mid + 1])
+				return mid;
+			if (a[mid] > a[l])
+				return Search(a, n, mid + 1, r);
+			if (a[mid] < a[l])
+				return Search(a, n, l, mid - 1);
+		}
+		return -1;
+	}
+
+}
